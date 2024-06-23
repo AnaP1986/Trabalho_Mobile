@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_contrato"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContratoFragment">
+
+    <TextView
+        android:id="@+id/tvDataInicioContrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/data_inicio"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etDataInicioContrato"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDataInicioContrato" />
+
+    <TextView
+        android:id="@+id/tvDataFimContrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/data_fim"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDataInicioContrato" />
+
+    <EditText
+        android:id="@+id/etDataFimContrato"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDataFimContrato" />
+
+    <Button
+        android:id="@+id/btnInserirContrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/inserir"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDataFimContrato" />
+
+    <Button
+        android:id="@+id/btnModificarContrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/modificar"
+        app:layout_constraintStart_toEndOf="@+id/btnInserirContrato"
+        app:layout_constraintTop_toBottomOf="@+id/etDataFimContrato" />
+
+    <Button
+        android:id="@+id/btnExcluirContrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/excluir"
+        app:layout_constraintStart_toEndOf="@+id/btnModificarContrato"
+        app:layout_constraintTop_toBottomOf="@+id/etDataFimContrato" />
+
+    <Button
+        android:id="@+id/btnBuscarContrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/buscar"
+        app:layout_constraintStart_toEndOf="@+id/btnExcluirContrato"
+        app:layout_constraintTop_toBottomOf="@+id/etDataFimContrato" />
+
+    <Button
+        android:id="@+id/btnListarContrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/listar"
+        app:layout_constraintStart_toEndOf="@+id/btnBuscarContrato"
+        app:layout_constraintTop_toBottomOf="@+id/etDataFimContrato" />
+</androidx.constraintlayout.widget.ConstraintLayout>

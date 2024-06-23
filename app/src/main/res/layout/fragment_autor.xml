@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_autor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AutorFragment">
+
+    <TextView
+        android:id="@+id/tvNomeAutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/nome"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etNomeAutor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNomeAutor" />
+
+    <TextView
+        android:id="@+id/tvApelidoAutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/apelido"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNomeAutor" />
+
+    <EditText
+        android:id="@+id/etApelidoAutor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvApelidoAutor" />
+
+    <CheckBox
+        android:id="@+id/cbAnonimoAutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/anonimo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etApelidoAutor" />
+
+    <Button
+        android:id="@+id/btnInserirAutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/inserir"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbAnonimoAutor" />
+
+    <Button
+        android:id="@+id/btnModificarAutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/modificar"
+        app:layout_constraintStart_toEndOf="@+id/btnInserirAutor"
+        app:layout_constraintTop_toBottomOf="@+id/cbAnonimoAutor" />
+
+    <Button
+        android:id="@+id/btnExcluirAutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/excluir"
+        app:layout_constraintStart_toEndOf="@+id/btnModificarAutor"
+        app:layout_constraintTop_toBottomOf="@+id/cbAnonimoAutor" />
+
+    <Button
+        android:id="@+id/btnBuscarAutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/buscar"
+        app:layout_constraintStart_toEndOf="@+id/btnExcluirAutor"
+        app:layout_constraintTop_toBottomOf="@+id/cbAnonimoAutor" />
+
+    <Button
+        android:id="@+id/btnListarAutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/listar"
+        app:layout_constraintStart_toEndOf="@+id/btnBuscarAutor"
+        app:layout_constraintTop_toBottomOf="@+id/cbAnonimoAutor" />
+</androidx.constraintlayout.widget.ConstraintLayout>

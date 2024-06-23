@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_acesso_relatorio"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AcessoRelatorioFragment">
+
+    <TextView
+        android:id="@+id/tvDataAcessoRelatorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/data_acesso"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etDataAcessoRelatorio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDataAcessoRelatorio" />
+
+    <TextView
+        android:id="@+id/tvNumeroAcessoRelatorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/numero_acesso"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDataAcessoRelatorio" />
+
+    <EditText
+        android:id="@+id/etNumeroAcessoRelatorio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNumeroAcessoRelatorio" />
+
+    <Button
+        android:id="@+id/btnInserirAcessoRelatorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/inserir"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNumeroAcessoRelatorio" />
+
+    <Button
+        android:id="@+id/btnModificarAcessoRelatorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/modificar"
+        app:layout_constraintStart_toEndOf="@+id/btnInserirAcessoRelatorio"
+        app:layout_constraintTop_toBottomOf="@+id/etNumeroAcessoRelatorio" />
+
+    <Button
+        android:id="@+id/btnExcluirAcessoRelatorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/excluir"
+        app:layout_constraintStart_toEndOf="@+id/btnModificarAcessoRelatorio"
+        app:layout_constraintTop_toBottomOf="@+id/etNumeroAcessoRelatorio" />
+
+    <Button
+        android:id="@+id/btnBuscarAcessoRelatorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />

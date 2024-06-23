@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Consultoria Relatório</string>
+    <string name="titulo">Título</string>
+    <string name="resumo">Resumo</string>
+    <string name="texto">Texto</string>
+    <string name="nome">Nome</string>
+    <string name="apelido">Apelido</string>
+    <string name="anonimo">Anônimo</string>
+    <string name="publico">Público</string>
+    <string name="privado">Privado</string>
+    <string name="data_inicio">Data de Início</string>
+    <string name="data_fim">Data de Fim</string>
+    <string name="cpf">CPF</string>
+    <string name="endereco">Endereço</string>
+    <string name="contrato">Contrato</string>
+    <string name="data_acesso">Data de Acesso</string>
+    <string name="numero_acesso">Número de Acesso</string>
+    <string name="autor">Autor</string>
+    <string name="relatorio">Relatório</string>
+    <string name="cliente">Cliente</string>
+    <string name="inserir">Inserir</string>
+    <string name="modificar">Modificar</string>
+    <string name="excluir">Excluir</string>
+    <string name="buscar">Buscar</string>
+    <string name="listar">Listar</string>
+    <string name="Relatorio">Relatórios</string>
+    <string name="Autor">Autores</string>
+    <string name="Cliente">Clientes</string>
+    <string name="Contrato">Contratos</string>
+    <string name="AcessoRelatorio">Acesso aos Relatórios</string>
+</resources>

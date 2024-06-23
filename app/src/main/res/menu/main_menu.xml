@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_01"
+        android:title="@string/Relatorio" />
+    <item
+        android:id="@+id/item_02"
+        android:title="@string/Autor" />
+    <item
+        android:id="@+id/item_03"
+        android:title="@string/Cliente" />
+    <item
+        android:id="@+id/item_04"
+        android:title="@string/Contrato" />
+    <item
+        android:id="@+id/item_05"
+        android:title="@string/AcessoRelatorio" />
+</menu>
