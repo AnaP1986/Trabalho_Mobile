@@ -11,101 +11,117 @@
         android:id="@+id/tvNomeCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/nome"
+        android:text="Nome do Cliente"
         android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="16dp"/>
 
     <EditText
         android:id="@+id/etNomeCliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNomeCliente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNomeCliente" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"/>
 
     <TextView
-        android:id="@+id/tvCPFCliente"
+        android:id="@+id/tvCpfCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/cpf"
+        android:text="CPF do Cliente"
         android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/etNomeCliente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNomeCliente" />
+        android:layout_margin="16dp"/>
 
     <EditText
-        android:id="@+id/etCPFCliente"
+        android:id="@+id/etCpfCliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCpfCliente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCPFCliente" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"/>
 
     <TextView
         android:id="@+id/tvEnderecoCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/endereco"
+        android:text="Endereço do Cliente"
         android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/etCpfCliente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCPFCliente" />
+        android:layout_margin="16dp"/>
 
     <EditText
         android:id="@+id/etEnderecoCliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEnderecoCliente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEnderecoCliente" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"/>
 
     <Button
         android:id="@+id/btnInserirCliente"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="@string/inserir"
+        app:layout_constraintTop_toBottomOf="@+id/etEnderecoCliente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEnderecoCliente" />
+        app:layout_constraintEnd_toStartOf="@+id/btnModificarCliente"
+        android:layout_margin="8dp"/>
 
     <Button
         android:id="@+id/btnModificarCliente"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="@string/modificar"
+        app:layout_constraintTop_toBottomOf="@+id/etEnderecoCliente"
         app:layout_constraintStart_toEndOf="@+id/btnInserirCliente"
-        app:layout_constraintTop_toBottomOf="@+id/etEnderecoCliente" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp"/>
 
     <Button
         android:id="@+id/btnExcluirCliente"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="@string/excluir"
-        app:layout_constraintStart_toEndOf="@+id/btnModificarCliente"
-        app:layout_constraintTop_toBottomOf="@+id/etEnderecoCliente" />
+        app:layout_constraintTop_toBottomOf="@+id/btnInserirCliente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBuscarCliente"
+        android:layout_margin="8dp"/>
 
     <Button
         android:id="@+id/btnBuscarCliente"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="@string/buscar"
+        app:layout_constraintTop_toBottomOf="@+id/btnModificarCliente"
         app:layout_constraintStart_toEndOf="@+id/btnExcluirCliente"
-        app:layout_constraintTop_toBottomOf="@+id/etEnderecoCliente" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp"/>
 
     <Button
         android:id="@+id/btnListarCliente"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="@string/listar"
-        app:layout_constraintStart_toEndOf="@+id/btnBuscarCliente"
-        app:layout_constraintTop_toBottomOf="@+id/etEnderecoCliente" />
+        app:layout_constraintTop_toBottomOf="@+id/btnBuscarCliente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvClientes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnListarCliente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="16dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

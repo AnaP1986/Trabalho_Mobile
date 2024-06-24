@@ -6,7 +6,7 @@ public class Cliente {
     private String cpf;
     private String endereco;
 
-    // Getters and Setters
+    // Getters e Setters
     public int getId() {
         return id;
     }
@@ -37,15 +37,5 @@ public class Cliente {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", endereco='" + endereco + '\'' +
-                '}';
     }
 }

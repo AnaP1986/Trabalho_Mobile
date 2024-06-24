@@ -3,10 +3,9 @@ package br.edu.fateczl.mobile_relatorio.model;
 public class Autor {
     private int id;
     private String nome;
-    private String apelido;
-    private boolean isAnonimo;
+    private String sobrenome;
 
-    // Getters and Setters
+    // Getters e Setters
     public int getId() {
         return id;
     }
@@ -23,29 +22,11 @@ public class Autor {
         this.nome = nome;
     }
 
-    public String getApelido() {
-        return apelido;
+    public String getSobrenome() {
+        return sobrenome;
     }
 
-    public void setApelido(String apelido) {
-        this.apelido = apelido;
-    }
-
-    public boolean isAnonimo() {
-        return isAnonimo;
-    }
-
-    public void setAnonimo(boolean anonimo) {
-        isAnonimo = anonimo;
-    }
-
-    @Override
-    public String toString() {
-        return "Autor{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", apelido='" + apelido + '\'' +
-                ", isAnonimo=" + isAnonimo +
-                '}';
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
 }

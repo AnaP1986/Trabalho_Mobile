@@ -7,68 +7,123 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 import br.edu.fateczl.mobile_relatorio.model.Cliente;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import java.util.ArrayList;
+import java.util.List;
+import br.edu.fateczl.mobile_relatorio.model.Cliente;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import java.util.ArrayList;
+import java.util.List;
+import br.edu.fateczl.mobile_relatorio.model.Cliente;
 
-public class ClienteDao implements IClienteDao {
-    private SQLiteDatabase db;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import java.util.ArrayList;
+import java.util.List;
+import br.edu.fateczl.mobile_relatorio.model.Cliente;
+
+public class ClienteDao extends GenericDao implements IClienteDao {
 
     public ClienteDao(Context context) {
-        GenericDao genericDao = new GenericDao(context);
-        db = genericDao.getWritableDatabase();
+        super(context);
     }
 
     @Override
     public void insert(Cliente cliente) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("nome", cliente.getNome());
         values.put("cpf", cliente.getCpf());
         values.put("endereco", cliente.getEndereco());
-        db.insert("Cliente", null, values);
+        db.insert("cliente", null, values);
+        db.close();
     }
 
     @Override
     public void update(Cliente cliente) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("nome", cliente.getNome());
-        values.put("cpf", cliente.getCpf());
         values.put("endereco", cliente.getEndereco());
-        db.update("Cliente", values, "id = ?", new String[]{String.valueOf(cliente.getId())});
+        db.update("cliente", values, "cpf = ?", new String[]{cliente.getCpf()});
+        db.close();
     }
 
     @Override
     public void delete(int id) {
-        db.delete("Cliente", "id = ?", new String[]{String.valueOf(id)});
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("cliente", "id = ?", new String[]{String.valueOf(id)});
+        db.close();
     }
 
     @Override
     public Cliente findById(int id) {
-        Cursor cursor = db.query("Cliente", null, "id = ?", new String[]{String.valueOf(id)}, null, null, null);
-        if (cursor != null && cursor.moveToFirst()) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("cliente", new String[]{"id", "nome", "cpf", "endereco"},
+                "id = ?", new String[]{String.valueOf(id)}, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
             Cliente cliente = new Cliente();
-            cliente.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
-            cliente.setNome(cursor.getString(cursor.getColumnIndexOrThrow("nome")));
-            cliente.setCpf(cursor.getString(cursor.getColumnIndexOrThrow("cpf")));
-            cliente.setEndereco(cursor.getString(cursor.getColumnIndexOrThrow("endereco")));
+            cliente.setId(cursor.getInt(0));
+            cliente.setNome(cursor.getString(1));
+            cliente.setCpf(cursor.getString(2));
+            cliente.setEndereco(cursor.getString(3));
             cursor.close();
+            db.close();
             return cliente;
+        } else {
+            db.close();
+            return null;
         }
-        return null;
+    }
+
+    @Override
+    public Cliente findByCpf(String cpf) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("cliente", new String[]{"id", "nome", "cpf", "endereco"},
+                "cpf = ?", new String[]{cpf}, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            Cliente cliente = new Cliente();
+            cliente.setId(cursor.getInt(0));
+            cliente.setNome(cursor.getString(1));
+            cliente.setCpf(cursor.getString(2));
+            cliente.setEndereco(cursor.getString(3));
+            cursor.close();
+            db.close();
+            return cliente;
+        } else {
+            db.close();
+            return null;
+        }
     }
 
     @Override
     public List<Cliente> findAll() {
         List<Cliente> clientes = new ArrayList<>();
-        Cursor cursor = db.query("Cliente", null, null, null, null, null, null);
-        if (cursor != null && cursor.moveToFirst()) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM cliente", null);
+        if (cursor.moveToFirst()) {
             do {
                 Cliente cliente = new Cliente();
-                cliente.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
-                cliente.setNome(cursor.getString(cursor.getColumnIndexOrThrow("nome")));
-                cliente.setCpf(cursor.getString(cursor.getColumnIndexOrThrow("cpf")));
-                cliente.setEndereco(cursor.getString(cursor.getColumnIndexOrThrow("endereco")));
+                cliente.setId(cursor.getInt(0));
+                cliente.setNome(cursor.getString(1));
+                cliente.setCpf(cursor.getString(2));
+                cliente.setEndereco(cursor.getString(3));
                 clientes.add(cliente);
             } while (cursor.moveToNext());
-            cursor.close();
         }
+        cursor.close();
+        db.close();
         return clientes;
     }
 }

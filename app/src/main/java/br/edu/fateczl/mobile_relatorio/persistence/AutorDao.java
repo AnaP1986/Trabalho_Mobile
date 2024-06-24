@@ -8,67 +8,119 @@ import java.util.ArrayList;
 import java.util.List;
 import br.edu.fateczl.mobile_relatorio.model.Autor;
 
-public class AutorDao implements IAutorDao {
-    private SQLiteDatabase db;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import java.util.ArrayList;
+import java.util.List;
+import br.edu.fateczl.mobile_relatorio.model.Autor;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import java.util.ArrayList;
+import java.util.List;
+import br.edu.fateczl.mobile_relatorio.model.Autor;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import java.util.ArrayList;
+import java.util.List;
+import br.edu.fateczl.mobile_relatorio.model.Autor;
+
+public class AutorDao extends GenericDao implements IAutorDao {
 
     public AutorDao(Context context) {
-        GenericDao genericDao = new GenericDao(context);
-        db = genericDao.getWritableDatabase();
+        super(context);
     }
 
     @Override
     public void insert(Autor autor) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("nome", autor.getNome());
-        values.put("apelido", autor.getApelido());
-        values.put("isAnonimo", autor.isAnonimo() ? 1 : 0);
-        db.insert("Autor", null, values);
+        values.put("sobrenome", autor.getSobrenome());
+        db.insert("autor", null, values);
+        db.close();
     }
 
     @Override
     public void update(Autor autor) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("nome", autor.getNome());
-        values.put("apelido", autor.getApelido());
-        values.put("isAnonimo", autor.isAnonimo() ? 1 : 0);
-        db.update("Autor", values, "id = ?", new String[]{String.valueOf(autor.getId())});
+        values.put("sobrenome", autor.getSobrenome());
+        db.update("autor", values, "id = ?", new String[]{String.valueOf(autor.getId())});
+        db.close();
     }
 
     @Override
     public void delete(int id) {
-        db.delete("Autor", "id = ?", new String[]{String.valueOf(id)});
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("autor", "id = ?", new String[]{String.valueOf(id)});
+        db.close();
     }
 
     @Override
     public Autor findById(int id) {
-        Cursor cursor = db.query("Autor", null, "id = ?", new String[]{String.valueOf(id)}, null, null, null);
-        if (cursor != null && cursor.moveToFirst()) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("autor", new String[]{"id", "nome", "sobrenome"},
+                "id = ?", new String[]{String.valueOf(id)}, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
             Autor autor = new Autor();
-            autor.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
-            autor.setNome(cursor.getString(cursor.getColumnIndexOrThrow("nome")));
-            autor.setApelido(cursor.getString(cursor.getColumnIndexOrThrow("apelido")));
-            autor.setAnonimo(cursor.getInt(cursor.getColumnIndexOrThrow("isAnonimo")) == 1);
+            autor.setId(cursor.getInt(0));
+            autor.setNome(cursor.getString(1));
+            autor.setSobrenome(cursor.getString(2));
             cursor.close();
+            db.close();
             return autor;
+        } else {
+            db.close();
+            return null;
         }
-        return null;
+    }
+
+    @Override
+    public Autor findByNomeSobrenome(String nome, String sobrenome) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("autor", new String[]{"id", "nome", "sobrenome"},
+                "nome = ? AND sobrenome = ?", new String[]{nome, sobrenome}, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            Autor autor = new Autor();
+            autor.setId(cursor.getInt(0));
+            autor.setNome(cursor.getString(1));
+            autor.setSobrenome(cursor.getString(2));
+            cursor.close();
+            db.close();
+            return autor;
+        } else {
+            db.close();
+            return null;
+        }
     }
 
     @Override
     public List<Autor> findAll() {
         List<Autor> autores = new ArrayList<>();
-        Cursor cursor = db.query("Autor", null, null, null, null, null, null);
-        if (cursor != null && cursor.moveToFirst()) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM autor", null);
+        if (cursor.moveToFirst()) {
             do {
                 Autor autor = new Autor();
-                autor.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
-                autor.setNome(cursor.getString(cursor.getColumnIndexOrThrow("nome")));
-                autor.setApelido(cursor.getString(cursor.getColumnIndexOrThrow("apelido")));
-                autor.setAnonimo(cursor.getInt(cursor.getColumnIndexOrThrow("isAnonimo")) == 1);
+                autor.setId(cursor.getInt(0));
+                autor.setNome(cursor.getString(1));
+                autor.setSobrenome(cursor.getString(2));
                 autores.add(autor);
             } while (cursor.moveToNext());
-            cursor.close();
         }
+        cursor.close();
+        db.close();
         return autores;
     }
 }

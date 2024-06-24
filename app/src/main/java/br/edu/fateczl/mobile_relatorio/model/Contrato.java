@@ -4,9 +4,8 @@ public class Contrato {
     private int id;
     private String dataInicio;
     private String dataFim;
-    private int clienteId;
 
-    // Getters and Setters
+    // Getters e Setters
     public int getId() {
         return id;
     }
@@ -29,23 +28,5 @@ public class Contrato {
 
     public void setDataFim(String dataFim) {
         this.dataFim = dataFim;
-    }
-
-    public int getClienteId() {
-        return clienteId;
-    }
-
-    public void setClienteId(int clienteId) {
-        this.clienteId = clienteId;
-    }
-
-    @Override
-    public String toString() {
-        return "Contrato{" +
-                "id=" + id +
-                ", dataInicio='" + dataInicio + '\'' +
-                ", dataFim='" + dataFim + '\'' +
-                ", clienteId=" + clienteId +
-                '}';
     }
 }

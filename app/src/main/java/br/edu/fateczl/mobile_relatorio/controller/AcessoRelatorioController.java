@@ -5,42 +5,36 @@ import java.util.List;
 import br.edu.fateczl.mobile_relatorio.model.AcessoRelatorio;
 import br.edu.fateczl.mobile_relatorio.persistence.IAcessoRelatorioDao;
 import br.edu.fateczl.mobile_relatorio.persistence.AcessoRelatorioDao;
+import android.content.Context;
+import java.util.List;
+import br.edu.fateczl.mobile_relatorio.model.AcessoRelatorio;
+import br.edu.fateczl.mobile_relatorio.persistence.AcessoRelatorioDao;
 
-public class AcessoRelatorioController implements IController {
-    private IAcessoRelatorioDao acessoRelatorioDao;
+public class AcessoRelatorioController {
+
+    private AcessoRelatorioDao acessoRelatorioDao;
 
     public AcessoRelatorioController(Context context) {
         acessoRelatorioDao = new AcessoRelatorioDao(context);
     }
 
-    @Override
-    public void insert() {
-        AcessoRelatorio acessoRelatorio = new AcessoRelatorio();
-        // Set the attributes for the acessoRelatorio object
+    public void insert(AcessoRelatorio acessoRelatorio) {
         acessoRelatorioDao.insert(acessoRelatorio);
     }
 
-    @Override
-    public void update() {
-        AcessoRelatorio acessoRelatorio = new AcessoRelatorio();
-        // Set the updated attributes for the acessoRelatorio object
+    public void update(AcessoRelatorio acessoRelatorio) {
         acessoRelatorioDao.update(acessoRelatorio);
     }
 
-    @Override
-    public void delete() {
-        int id = 1; // Replace with the actual ID to delete
+    public void delete(int id) {
         acessoRelatorioDao.delete(id);
     }
 
-    @Override
-    public void findById() {
-        int id = 1; // Replace with the actual ID to find
-        AcessoRelatorio acessoRelatorio = acessoRelatorioDao.findById(id);
+    public AcessoRelatorio findById(int id) {
+        return acessoRelatorioDao.findById(id);
     }
 
-    @Override
-    public void findAll() {
-        List<AcessoRelatorio> acessosRelatorio = acessoRelatorioDao.findAll();
+    public List<AcessoRelatorio> findAll() {
+        return acessoRelatorioDao.findAll();
     }
 }

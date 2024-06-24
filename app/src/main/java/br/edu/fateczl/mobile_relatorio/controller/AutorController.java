@@ -5,42 +5,36 @@ import java.util.List;
 import br.edu.fateczl.mobile_relatorio.model.Autor;
 import br.edu.fateczl.mobile_relatorio.persistence.IAutorDao;
 import br.edu.fateczl.mobile_relatorio.persistence.AutorDao;
+import android.content.Context;
+import java.util.List;
+import br.edu.fateczl.mobile_relatorio.model.Autor;
+import br.edu.fateczl.mobile_relatorio.persistence.AutorDao;
 
-public class AutorController implements IController {
-    private IAutorDao autorDao;
+public class AutorController {
+
+    private AutorDao autorDao;
 
     public AutorController(Context context) {
         autorDao = new AutorDao(context);
     }
 
-    @Override
-    public void insert() {
-        Autor autor = new Autor();
-        // Set the attributes for the autor object
+    public void insert(Autor autor) {
         autorDao.insert(autor);
     }
 
-    @Override
-    public void update() {
-        Autor autor = new Autor();
-        // Set the updated attributes for the autor object
+    public void update(Autor autor) {
         autorDao.update(autor);
     }
 
-    @Override
-    public void delete() {
-        int id = 1; // Replace with the actual ID to delete
+    public void delete(int id) {
         autorDao.delete(id);
     }
 
-    @Override
-    public void findById() {
-        int id = 1; // Replace with the actual ID to find
-        Autor autor = autorDao.findById(id);
+    public Autor findByNomeSobrenome(String nome, String sobrenome) {
+        return autorDao.findByNomeSobrenome(nome, sobrenome);
     }
 
-    @Override
-    public void findAll() {
-        List<Autor> autores = autorDao.findAll();
+    public List<Autor> findAll() {
+        return autorDao.findAll();
     }
 }

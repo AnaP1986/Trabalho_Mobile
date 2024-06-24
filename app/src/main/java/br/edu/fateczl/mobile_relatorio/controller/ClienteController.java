@@ -6,41 +6,36 @@ import br.edu.fateczl.mobile_relatorio.model.Cliente;
 import br.edu.fateczl.mobile_relatorio.persistence.IClienteDao;
 import br.edu.fateczl.mobile_relatorio.persistence.ClienteDao;
 
-public class ClienteController implements IController {
-    private IClienteDao clienteDao;
+import android.content.Context;
+import java.util.List;
+import br.edu.fateczl.mobile_relatorio.model.Cliente;
+import br.edu.fateczl.mobile_relatorio.persistence.ClienteDao;
+
+public class ClienteController {
+
+    private ClienteDao clienteDao;
 
     public ClienteController(Context context) {
         clienteDao = new ClienteDao(context);
     }
 
-    @Override
-    public void insert() {
-        Cliente cliente = new Cliente();
-        // Set the attributes for the cliente object
+    public void insert(Cliente cliente) {
         clienteDao.insert(cliente);
     }
 
-    @Override
-    public void update() {
-        Cliente cliente = new Cliente();
-        // Set the updated attributes for the cliente object
+    public void update(Cliente cliente) {
         clienteDao.update(cliente);
     }
 
-    @Override
-    public void delete() {
-        int id = 1; // Replace with the actual ID to delete
+    public void delete(int id) {
         clienteDao.delete(id);
     }
 
-    @Override
-    public void findById() {
-        int id = 1; // Replace with the actual ID to find
-        Cliente cliente = clienteDao.findById(id);
+    public Cliente findByCpf(String cpf) {
+        return clienteDao.findByCpf(cpf);
     }
 
-    @Override
-    public void findAll() {
-        List<Cliente> clientes = clienteDao.findAll();
+    public List<Cliente> findAll() {
+        return clienteDao.findAll();
     }
 }

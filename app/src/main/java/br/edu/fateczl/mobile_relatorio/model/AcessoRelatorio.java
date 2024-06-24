@@ -7,7 +7,7 @@ public class AcessoRelatorio {
     private int clienteId;
     private int relatorioId;
 
-    // Getters and Setters
+    // Getters e Setters
     public int getId() {
         return id;
     }
@@ -46,16 +46,5 @@ public class AcessoRelatorio {
 
     public void setRelatorioId(int relatorioId) {
         this.relatorioId = relatorioId;
-    }
-
-    @Override
-    public String toString() {
-        return "AcessoRelatorio{" +
-                "id=" + id +
-                ", dataAcesso='" + dataAcesso + '\'' +
-                ", numeroAcesso=" + numeroAcesso +
-                ", clienteId=" + clienteId +
-                ", relatorioId=" + relatorioId +
-                '}';
     }
 }

@@ -7,76 +7,119 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 import br.edu.fateczl.mobile_relatorio.model.Relatorio;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import java.util.ArrayList;
+import java.util.List;
+import br.edu.fateczl.mobile_relatorio.model.Relatorio;
 
-public class RelatorioDao implements IRelatorioDao {
-    private SQLiteDatabase db;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import java.util.ArrayList;
+import java.util.List;
+import br.edu.fateczl.mobile_relatorio.model.Relatorio;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import java.util.ArrayList;
+import java.util.List;
+import br.edu.fateczl.mobile_relatorio.model.Relatorio;
+
+public class RelatorioDao extends GenericDao implements IRelatorioDao {
 
     public RelatorioDao(Context context) {
-        GenericDao genericDao = new GenericDao(context);
-        db = genericDao.getWritableDatabase();
+        super(context);
     }
 
     @Override
     public void insert(Relatorio relatorio) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("titulo", relatorio.getTitulo());
         values.put("resumo", relatorio.getResumo());
-        values.put("texto", relatorio.getTexto());
-        values.put("isPublico", relatorio.isPublico() ? 1 : 0);
-        values.put("autorId", relatorio.getAutorId());
-        db.insert("Relatorio", null, values);
+        db.insert("relatorio", null, values);
+        db.close();
     }
 
     @Override
     public void update(Relatorio relatorio) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("titulo", relatorio.getTitulo());
         values.put("resumo", relatorio.getResumo());
-        values.put("texto", relatorio.getTexto());
-        values.put("isPublico", relatorio.isPublico() ? 1 : 0);
-        values.put("autorId", relatorio.getAutorId());
-        db.update("Relatorio", values, "id = ?", new String[]{String.valueOf(relatorio.getId())});
+        db.update("relatorio", values, "id = ?", new String[]{String.valueOf(relatorio.getId())});
+        db.close();
     }
 
     @Override
     public void delete(int id) {
-        db.delete("Relatorio", "id = ?", new String[]{String.valueOf(id)});
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("relatorio", "id = ?", new String[]{String.valueOf(id)});
+        db.close();
     }
 
     @Override
     public Relatorio findById(int id) {
-        Cursor cursor = db.query("Relatorio", null, "id = ?", new String[]{String.valueOf(id)}, null, null, null);
-        if (cursor != null && cursor.moveToFirst()) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("relatorio", new String[]{"id", "titulo", "resumo"},
+                "id = ?", new String[]{String.valueOf(id)}, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
             Relatorio relatorio = new Relatorio();
-            relatorio.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
-            relatorio.setTitulo(cursor.getString(cursor.getColumnIndexOrThrow("titulo")));
-            relatorio.setResumo(cursor.getString(cursor.getColumnIndexOrThrow("resumo")));
-            relatorio.setTexto(cursor.getString(cursor.getColumnIndexOrThrow("texto")));
-            relatorio.setPublico(cursor.getInt(cursor.getColumnIndexOrThrow("isPublico")) == 1);
-            relatorio.setAutorId(cursor.getInt(cursor.getColumnIndexOrThrow("autorId")));
+            relatorio.setId(cursor.getInt(0));
+            relatorio.setTitulo(cursor.getString(1));
+            relatorio.setResumo(cursor.getString(2));
             cursor.close();
+            db.close();
             return relatorio;
+        } else {
+            db.close();
+            return null;
         }
-        return null;
+    }
+
+    @Override
+    public Relatorio findByTitulo(String titulo) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("relatorio", new String[]{"id", "titulo", "resumo"},
+                "titulo = ?", new String[]{titulo}, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            Relatorio relatorio = new Relatorio();
+            relatorio.setId(cursor.getInt(0));
+            relatorio.setTitulo(cursor.getString(1));
+            relatorio.setResumo(cursor.getString(2));
+            cursor.close();
+            db.close();
+            return relatorio;
+        } else {
+            db.close();
+            return null;
+        }
     }
 
     @Override
     public List<Relatorio> findAll() {
         List<Relatorio> relatorios = new ArrayList<>();
-        Cursor cursor = db.query("Relatorio", null, null, null, null, null, null);
-        if (cursor != null && cursor.moveToFirst()) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM relatorio", null);
+        if (cursor.moveToFirst()) {
             do {
                 Relatorio relatorio = new Relatorio();
-                relatorio.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
-                relatorio.setTitulo(cursor.getString(cursor.getColumnIndexOrThrow("titulo")));
-                relatorio.setResumo(cursor.getString(cursor.getColumnIndexOrThrow("resumo")));
-                relatorio.setTexto(cursor.getString(cursor.getColumnIndexOrThrow("texto")));
-                relatorio.setPublico(cursor.getInt(cursor.getColumnIndexOrThrow("isPublico")) == 1);
-                relatorio.setAutorId(cursor.getInt(cursor.getColumnIndexOrThrow("autorId")));
+                relatorio.setId(cursor.getInt(0));
+                relatorio.setTitulo(cursor.getString(1));
+                relatorio.setResumo(cursor.getString(2));
                 relatorios.add(relatorio);
             } while (cursor.moveToNext());
-            cursor.close();
         }
+        cursor.close();
+        db.close();
         return relatorios;
     }
 }

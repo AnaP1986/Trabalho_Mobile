@@ -6,41 +6,37 @@ import br.edu.fateczl.mobile_relatorio.model.Contrato;
 import br.edu.fateczl.mobile_relatorio.persistence.IContratoDao;
 import br.edu.fateczl.mobile_relatorio.persistence.ContratoDao;
 
-public class ContratoController implements IController {
-    private IContratoDao contratoDao;
+
+import android.content.Context;
+import java.util.List;
+import br.edu.fateczl.mobile_relatorio.model.Contrato;
+import br.edu.fateczl.mobile_relatorio.persistence.ContratoDao;
+
+public class ContratoController {
+
+    private ContratoDao contratoDao;
 
     public ContratoController(Context context) {
         contratoDao = new ContratoDao(context);
     }
 
-    @Override
-    public void insert() {
-        Contrato contrato = new Contrato();
-        // Set the attributes for the contrato object
+    public void insert(Contrato contrato) {
         contratoDao.insert(contrato);
     }
 
-    @Override
-    public void update() {
-        Contrato contrato = new Contrato();
-        // Set the updated attributes for the contrato object
+    public void update(Contrato contrato) {
         contratoDao.update(contrato);
     }
 
-    @Override
-    public void delete() {
-        int id = 1; // Replace with the actual ID to delete
+    public void delete(int id) {
         contratoDao.delete(id);
     }
 
-    @Override
-    public void findById() {
-        int id = 1; // Replace with the actual ID to find
-        Contrato contrato = contratoDao.findById(id);
+    public Contrato findByDatas(String dataInicio, String dataFim) {
+        return contratoDao.findByDatas(dataInicio, dataFim);
     }
 
-    @Override
-    public void findAll() {
-        List<Contrato> contratos = contratoDao.findAll();
+    public List<Contrato> findAll() {
+        return contratoDao.findAll();
     }
 }

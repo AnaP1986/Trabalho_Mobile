@@ -11,101 +11,98 @@
         android:id="@+id/tvTituloRelatorio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/titulo"
+        android:text="Título do Relatório"
         android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="16dp"/>
 
     <EditText
         android:id="@+id/etTituloRelatorio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloRelatorio"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTituloRelatorio" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"/>
 
     <TextView
         android:id="@+id/tvResumoRelatorio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/resumo"
+        android:text="Resumo do Relatório"
         android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/etTituloRelatorio"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTituloRelatorio" />
+        android:layout_margin="16dp"/>
 
     <EditText
         android:id="@+id/etResumoRelatorio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvResumoRelatorio"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvResumoRelatorio" />
-
-    <TextView
-        android:id="@+id/tvTextoRelatorio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/texto"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etResumoRelatorio" />
-
-    <EditText
-        android:id="@+id/etTextoRelatorio"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTextoRelatorio" />
+        android:layout_margin="16dp"/>
 
     <Button
         android:id="@+id/btnInserirRelatorio"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="@string/inserir"
+        app:layout_constraintTop_toBottomOf="@+id/etResumoRelatorio"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTextoRelatorio" />
+        app:layout_constraintEnd_toStartOf="@+id/btnModificarRelatorio"
+        android:layout_margin="8dp"/>
 
     <Button
         android:id="@+id/btnModificarRelatorio"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="@string/modificar"
+        app:layout_constraintTop_toBottomOf="@+id/etResumoRelatorio"
         app:layout_constraintStart_toEndOf="@+id/btnInserirRelatorio"
-        app:layout_constraintTop_toBottomOf="@+id/etTextoRelatorio" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp"/>
 
     <Button
         android:id="@+id/btnExcluirRelatorio"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="@string/excluir"
-        app:layout_constraintStart_toEndOf="@+id/btnModificarRelatorio"
-        app:layout_constraintTop_toBottomOf="@+id/etTextoRelatorio" />
+        app:layout_constraintTop_toBottomOf="@+id/btnInserirRelatorio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBuscarRelatorio"
+        android:layout_margin="8dp"/>
 
     <Button
         android:id="@+id/btnBuscarRelatorio"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="@string/buscar"
+        app:layout_constraintTop_toBottomOf="@+id/btnModificarRelatorio"
         app:layout_constraintStart_toEndOf="@+id/btnExcluirRelatorio"
-        app:layout_constraintTop_toBottomOf="@+id/etTextoRelatorio" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp"/>
 
     <Button
         android:id="@+id/btnListarRelatorio"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="@string/listar"
-        app:layout_constraintStart_toEndOf="@+id/btnBuscarRelatorio"
-        app:layout_constraintTop_toBottomOf="@+id/etTextoRelatorio" />
+        app:layout_constraintTop_toBottomOf="@+id/btnBuscarRelatorio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRelatorios"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnListarRelatorio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="16dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

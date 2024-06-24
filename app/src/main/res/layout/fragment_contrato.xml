@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="@string/data_inicio"
+        android:text="Data de Início"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="@string/data_fim"
+        android:text="Data de Fim"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etDataInicioContrato" />
@@ -47,46 +47,62 @@
 
     <Button
         android:id="@+id/btnInserirContrato"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
         android:text="@string/inserir"
+        app:layout_constraintEnd_toStartOf="@+id/btnModificarContrato"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etDataFimContrato" />
 
     <Button
         android:id="@+id/btnModificarContrato"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
         android:text="@string/modificar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnInserirContrato"
         app:layout_constraintTop_toBottomOf="@+id/etDataFimContrato" />
 
     <Button
         android:id="@+id/btnExcluirContrato"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
         android:text="@string/excluir"
-        app:layout_constraintStart_toEndOf="@+id/btnModificarContrato"
-        app:layout_constraintTop_toBottomOf="@+id/etDataFimContrato" />
+        app:layout_constraintEnd_toStartOf="@+id/btnBuscarContrato"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnInserirContrato" />
 
     <Button
         android:id="@+id/btnBuscarContrato"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
         android:text="@string/buscar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnExcluirContrato"
-        app:layout_constraintTop_toBottomOf="@+id/etDataFimContrato" />
+        app:layout_constraintTop_toBottomOf="@+id/btnModificarContrato" />
 
     <Button
         android:id="@+id/btnListarContrato"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
         android:text="@string/listar"
-        app:layout_constraintStart_toEndOf="@+id/btnBuscarContrato"
-        app:layout_constraintTop_toBottomOf="@+id/etDataFimContrato" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBuscarContrato" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvContratos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnListarContrato" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
